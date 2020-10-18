@@ -23,4 +23,18 @@ describe("Catalogue", () => {
       expect(result).to.be.undefined;
     });
   });
+
+  describe("removeProductById", () => {
+    it("should remove product with a valid id", function () {
+      let result = cat.removeProductById("A123");
+      expect(result.id).to.equal("A123");
+      // Check object state
+      result = cat.findProductById("A123");
+      expect(result).to.be.undefined;
+    });
+    it("should return undefined when asked to remove invalid product", function () {
+      const result = cat.removeProductById("A321");
+      expect(result).to.be.undefined;
+    });
+  });
 });
